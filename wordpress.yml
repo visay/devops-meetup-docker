@@ -1,0 +1,17 @@
+db:
+  image: mariadb:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: wordpress
+
+wordpress:
+  image: wordpress:latest
+  links:
+    - db
+  ports:
+    - "80:80"
+  environment:
+    WORDPRESS_DB_HOST: db
+    WORDPRESS_DB_USER: root
+    WORDPRESS_DB_PASSWORD: root
+    WORDPRESS_DB_NAME: wordpress

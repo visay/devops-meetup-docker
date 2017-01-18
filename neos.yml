@@ -1,0 +1,13 @@
+neos-db:
+  image: million12/mariadb:latest
+  environment:
+    MARIADB_PASS: root
+
+neos:
+  image: million12/typo3-neos:latest
+  links:
+    - neos-db:db
+  ports:
+    - "8081:80"
+  environment:
+    T3APP_VHOST_NAMES: neos

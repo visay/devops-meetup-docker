@@ -1,0 +1,11 @@
+typo3-db:
+  image: mariadb:latest
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+
+typo3:
+  image: martinhelmich/typo3:latest
+  links:
+    - typo3-db
+  ports:
+    - "8080:80"
